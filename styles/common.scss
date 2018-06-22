@@ -1,0 +1,22 @@
+@charset "UTF-8";
+@import 'reset.scss';
+
+main {
+	padding: 1.25rem 0;
+}
+
+.wrap {
+    max-width: 77.5rem;
+    padding: 0 1.25rem;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width:930px) {
+	.wrap {
+		max-width: 64rem;
+	}
+}
+
+@media only screen and (max-width:768px) {
+
+}
