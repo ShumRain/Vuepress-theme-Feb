@@ -1,7 +1,7 @@
 <template>
     <main>
         <section class="article-list wrap">
-            <Card  v-for="item in pages" :info="item" v-if="!!item.title"></Card>
+            <Card v-for="(item, index) in pages" :info="item" v-if="!!item.title" :key="index"></Card>
         </section>
     </main>
 </template>
