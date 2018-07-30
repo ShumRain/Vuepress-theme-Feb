@@ -16,6 +16,9 @@ export default {
     components: { Card, },
     mounted() {
         bgiLazy()
+    },
+    updated() {
+        bgiLazy()
     }
 }
 </script>

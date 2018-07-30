@@ -3,18 +3,18 @@
         <div class="page-nav-item" v-if="prev">
             <div v-if="prev.frontmatter.cover" class="cover lazy-bg blur" :data-lazy="prev.frontmatter.cover + imgHandle"></div>
             <div v-else class="cover"></div>
-            <a :href="prev.path">
+            <router-link :to="prev.path">
                 <h2 class="title">{{ prev.title }}</h2>
                 <p>{{ prev.frontmatter.description }}...</p>
-            </a>
+            </router-link>
         </div>
         <div class="page-nav-item" v-if="next">
             <div v-if="next.frontmatter.cover" class="cover lazy-bg blur" :data-lazy="next.frontmatter.cover + imgHandle"></div>
             <div v-else class="cover"></div>
-            <a :href="next.path">
+            <router-link :to="next.path">
                 <h2 class="title">{{ next.title }}</h2>
                 <p>{{ next.frontmatter.description }}...</p>
-            </a>
+            </router-link>
         </div>
     </nav>
 </template>

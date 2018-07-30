@@ -1,7 +1,7 @@
 <template>
     <article class="article-item">
         <div class="article-inner">
-            <div class="article-cover lazy-bg" :data-lazy="info.frontmatter.cover + imgHandle"></div>
+            <div class="article-cover lazy-bg" :data-lazy="info.frontmatter.cover + imgHandle" :key="info.frontmatter.cover"></div>
             <router-link :to="info.path">
                 <h3 class="article-title">{{ info.title }}</h3>
                 <div class="article-info">

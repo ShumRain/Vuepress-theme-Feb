@@ -2,7 +2,7 @@
     <header class="navbar">
         <div class="wrap">
             <h1>
-                <router-link :to="$localePath">SHUMRAIN <span>/</span></router-link>
+                <a href="javascript:;" @click="back">SHUMRAIN <span>/</span></a>
             </h1>
             <nav class="nav-links">
                 <div class="nav-item" v-for="item in nav" :key="item.link">
@@ -44,6 +44,12 @@ export default {
         this.nav = this.$site.themeConfig.nav
         this.github = this.$site.themeConfig.github
         this.dropContent = this.nav.concat(this.github)
+    },
+    methods: {
+        back() {
+            this.$emit('backHome')
+            this.$router.push(this.$localePath)
+        }
     }
 }
 </script>

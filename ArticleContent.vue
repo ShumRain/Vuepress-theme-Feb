@@ -2,7 +2,7 @@
     <main>
         <article class="article-content">
             <div class="banner-inner-box">
-                <div class="article-banner lazy-bg" :data-lazy="coverImg + imgHandle">
+                <div class="article-banner lazy-bg" :data-lazy="coverImg + imgHandle" :key="coverImg">
                     <div class="cover"></div>
                 </div>
                 <div class="wrap">
@@ -71,6 +71,7 @@ export default {
             let index = this.$site.pages.indexOf(this.$page)
             if (index + 1 <= length) {
                 next = this.$site.pages[index + 1]
+                next.path === '/' && (next = null)
             }
             return next
         },
@@ -87,6 +88,9 @@ export default {
         bgiLazy()
         lazyload()
     },
+    updated() {
+        bgiLazy()
+    }
 }
 </script>
 
