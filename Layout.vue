@@ -31,7 +31,6 @@ export default {
         },
         backHomeFn() {
             this.currentPage = 1
-            console.log(this.currentPage)
         }
     },
     computed: {

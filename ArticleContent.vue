@@ -23,21 +23,27 @@
             </div>
         </article>
         <PageNav :prev="resolvePrev" :next="resolveNext"></PageNav>
+        <div id="comments-container"></div>
     </main>
 </template>
 
 
 <script>
-import { formatDate, bgiLazy, lazyload } from './util.js'
+import { formatDate, bgiLazy, lazyload, comments } from './util.js'
+import Gitment from 'gitment'
 import PageNav from './PageNav'
 
 export default {
+    data() {
+        return {
+            comments: {}
+        }
+    },
     components: {
         PageNav,
     },
     computed: {
         title() {
-            console.log(this)
             return this.$page.frontmatter.title || this.$page.title
         },
         coverImg() {
@@ -85,10 +91,16 @@ export default {
         }
     },
     mounted() {
+        let commentsContainer = document.getElementById('comments-container')
+        this.comments = comments(this.$site.themeConfig.gitmentConfig, commentsContainer)
+
+        this.comments.render()
         bgiLazy()
         lazyload()
     },
     updated() {
+        this.comments.destory()
+        this.comments.render()
         bgiLazy()
     }
 }
@@ -97,4 +109,17 @@ export default {
 <style lang="scss">
     @import './styles/ArticleContent';
     @import './styles/markdown';
+    @import './styles/gitment';
+
+    #comments-container {
+        width: 60rem;
+        margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 730px) {
+        #comments-container {
+            width: 100%;
+            padding: 0 1.67rem;
+        }
+    }
 </style>

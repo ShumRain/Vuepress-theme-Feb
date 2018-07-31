@@ -112,3 +112,22 @@ export function lazyload(container) {
 
 	new Lazy()
 }
+
+import Gitment from 'gitment'
+
+export function comments(config, container) {
+	config = config || {}
+
+	let gitment = new Gitment(config)
+
+	return {
+		render() {
+			if (!gitment) gitment = new Gitment(config)
+			container ? gitment.render(container) :
+			document.body.appendChild(gitment.render())
+		},
+		destory() {
+			gitment = null
+		}
+	}
+}
