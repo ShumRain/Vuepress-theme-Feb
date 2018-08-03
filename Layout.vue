@@ -42,8 +42,8 @@ export default {
             const { pages } = this.$site
             const start = perPage * (this.currentPage - 1)
             const end = this.currentPage * perPage
-
-            return pages.slice(start, end)
+            
+            return pages.filter(i => i.path !== '/').slice(start, end)
         }
     },
     mounted() {
