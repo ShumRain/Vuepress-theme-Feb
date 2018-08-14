@@ -75,6 +75,7 @@ export default {
             let next
             let length = this.$site.pages.length 
             let index = this.$site.pages.indexOf(this.$page)
+            console.log(this.$page)
             if (index + 1 <= length) {
                 next = this.$site.pages[index + 1]
                 next.path === '/' && (next = null)
@@ -82,10 +83,12 @@ export default {
             return next
         },
         resolvePrev() {
+            console.log(this.$site)
             let prev
             let index = this.$site.pages.indexOf(this.$page)
             if (index -1 >= 0) {
                 prev = this.$site.pages[index - 1]
+                prev.path === '/' && (prev = null)
             }
             return prev
         }
